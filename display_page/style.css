@@ -1,0 +1,45 @@
+html, body {
+    height: 100%;
+}
+
+.fill-height {
+    min-height: 100%;
+    height:auto !important; /* cross-browser */
+    height: 100%; /* cross-browser */
+}
+
+.bg1{
+    background-image: url("../backgrounds/ukMl3B9.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.content-box, 
+.nav-bar,
+.main-box,
+.player{
+    position: relative;
+    background-color: #131313de;
+    color: white;
+    text-align: center;
+    margin: 7.5px;
+    top: 10px;
+    font-size: 1.5em;
+    opacity: 0.98;
+}
+
+.main-box{
+    height: 83vh;
+}
+
+.content-box{
+    height: 36vh;
+}
+
+.player{
+    height:10vh;
+}
+
+.nav-bar{
+    height: 8vh;
+}

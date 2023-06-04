@@ -1,0 +1,22 @@
+frameworks used-
+bootstrap
+electron js
+
+web apis
+Deezer (music streaming)
+
+
+Bootstrap notes:
+Use mx-x to add padding up or down and specify the quantity
+
+nest columns to stack vertically 
+- use row col pairs 
+- first declare a col and then a row
+
+
+helpful links-
+https://stackoverflow.com/questions/16390370/how-can-i-get-a-bootstrap-column-to-span-multiple-rows
+https://stackoverflow.com/questions/10085723/twitter-bootstrap-add-top-space-between-rows
+https://stackoverflow.com/questions/16351404/bootstrap-combining-rows-rowspan
+https://stackoverflow.com/questions/24659471/nested-rows-with-bootstrap-grid-system
+https://stackoverflow.com/questions/23046801/height-not-100-on-container-fluid-even-though-html-and-body-are
