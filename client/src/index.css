@@ -14,7 +14,8 @@ html, body {
   background-repeat: no-repeat;
 }
 
-.content-box, 
+.content-box-1,
+.content-box-2,
 .nav-bar,
 .main-box,
 .player{
@@ -22,24 +23,30 @@ html, body {
   background-color: #131313de;
   color: white;
   text-align: center;
-  margin: 7.5px;
-  top: 10px;
   font-size: 1.5em;
-  opacity: 1;
+  margin-bottom: 5px;
+  top: 5px;
 }
 
-.main-box{
-  height: 83vh;
-}
-
-.content-box{
-  height: 36vh;
-}
-
-.player{
-  height:10vh;
+.nav-bar,
+.content-box-1,
+.content-box-2{
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .nav-bar{
-  height: 8vh;
+  height: 10dvh;
 }
+
+.content-box-1,
+.content-box-2{
+  height: 40dvh;
+}
+
+.player{
+  height: 7dvh;
+}
+
+
+
