@@ -9,7 +9,7 @@ html, body {
 }
 
 .bg1{
-  background-image: url("../public/backgrounds/train-scenery.jpg");
+  background-image: url("./backgrounds/train-scenery.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

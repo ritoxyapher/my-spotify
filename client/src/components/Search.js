@@ -3,12 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup'; // Import these components from react-bootstrap 
 
-function Pressed(){
-
-    return console.log("Pressed");
-}
 
 function Search(){
+
+    function Pressed(){
+        return console.log("Pressed");
+    }
     
     return(
 
@@ -22,13 +22,11 @@ function Search(){
                 aria-label="What do you want to listen to?"
                 aria-describedby="basic-addon2"
                 />
-                <Button variant="outline-secondary" id="button-addon2" onClick={Pressed()}>
+                <Button variant="outline-secondary" id="button-addon2" onClick={Pressed}>
                     Search
                 </Button>
             </InputGroup>
 
-           
-            
         </div> 
 
     );
