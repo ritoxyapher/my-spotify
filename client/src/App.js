@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@mui/material/ListItem';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Image from './backgrounds/genshin.png';
+import Image from './backgrounds/starRail.png';
 
 
 // since these components are what we defined, im assuming we cannot create hooks to provide css styling to them
@@ -89,7 +89,8 @@ function App() {
         marginTop: '7px',  
         }}
         >
-          <MainBox></MainBox>
+          <MainBox>
+          </MainBox>
         </Box>
         
         <Box sx={{ gridArea: 'player', 

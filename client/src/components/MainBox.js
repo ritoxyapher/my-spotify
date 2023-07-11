@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import Search from './Search';
 
 import useStyles from './style';
 
@@ -24,6 +25,7 @@ function MainBox(){
         <React.Fragment>
             
             <Container maxWidth='false'>
+                <Search></Search>
                 
             </Container>
             
