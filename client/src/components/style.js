@@ -27,7 +27,13 @@ const useStyles = makeStyles((theme) => ({ // creating a hook for our css stylin
 
     border:{
       borderRadius: '10px',
-    }
+    },
+
+    searchbar:{
+      marginBottom: '20px',
+      width: '50vh'
+    },
+
   
   }));
 

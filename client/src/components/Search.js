@@ -8,69 +8,64 @@ import { Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { Typography } from '@mui/material';
-
-const CLIENT_ID = "0c30bcc04e5f4d51a97e88e9a6b8809a";
-const CLIENT_SECRET = "9a39673e470e40d1a2b022cbeeadbc4b";
-
-
+import useStyles from "./style";
+import {returnUser} from "./acc_data" // import our function that fetches all user data and puts it in an object
 
 function Search(){
 
+    const styles = useStyles();
     const [searchInput, setSearchInput] = useState(""); // makes a state variable and a function that applies the change
-    const [accessToken, setAccessToken] = useState("");
     const [albums, setAlbums] = useState([]); // albums is going to represent the state of what albums we currently have
+    const [user, setUser] = useState( // initializes a user object so we can use our function to set it when the page loads
+        {newUser: {
+            auth_parameters: {},
+            access_token: {},
+            search_parameters: {},
+            client_id: "",
+            client_secret: "",
+        }
+    });
 
     // I need an access token to make calls to spotify api
     // we can use useEffect to do something after the DOM has rendered
 
     useEffect(() => {
 
-        var authParameters = {
-            method: 'POST', // spotify tells us to make a POST to the api
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET
-            // spotify wants the body to have this information
+        async function getNewUser(){
+
+            // returnUser() returns a promise so we unwrap it with await
+            const new_user = await returnUser() // i put all the function calls and necessary info fetches in another file so we dont have to rewrite each time
+            .then(response => {
+                    setUser(user => ({ // you have to manually merge these in react, they will not set automatically
+                        ...user, auth_parameters: response.auth_parameters,
+                        ...user, access_token: response.access_token,
+                        ...user, search_parameters: response.search_parameters,
+                        ...user, client_id: response.client_id,
+                        ...user, client_secret: response.client_secret,
+                    }))
+
+            });
         }
 
-        fetch('https://accounts.spotify.com/api/token', authParameters) // inputs parameters for our fetch call to be formatted a specific way
-        .then(result => result.json())
-        .then(data => setAccessToken(data.access_token)) // sets our accessToken variable with our set function and we pass in only the access token from the json
+        getNewUser(); // call it so we can set our user state with the response
+        
 
     }, []); // [] this is so it only runs once when we start our react application
 
-    // Search
-
     async function search(){
-        console.log("Search for " + searchInput);
 
-        // Artist ID
         // Get request using search
-        var searchParameters = { // same parameters for both fetching artist object and albums
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + accessToken // need this to authorize your request to the spotify api
-            }
-        }
-
-        var artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', searchParameters)
+        const artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', user.search_parameters)
         .then(response => response.json())
         .then(data => { return data.artists.items[0].id }) // the fetch call returns a json with a block of info, we have to narrow down the info we want
 
 
         // with Artist ID grab all albums from that artist
-        var returnAlbums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=US&limit=50', searchParameters)
+        const returnAlbums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=US&limit=50', user.search_parameters)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             setAlbums(data.items);
         }) // set our album state to the returning array that contains all the albums of that searched artist
-
-
-        // Display
-
     }
 
 
@@ -95,7 +90,7 @@ function Search(){
             
             <h1>Search</h1> {/* Functions only return one thing. So we will wrap it and return this to be rendered*/}
 
-            <InputGroup className="mb-3">
+            <InputGroup className={styles.searchbar}>
             <Form.Control
                 placeholder="What do you want to listen to?"
                 aria-label="What do you want to listen to?"
@@ -121,7 +116,11 @@ function Search(){
                         <Grid item>
                             <Card>
 
-                                <Card sx={{ maxWidth: 200, maxHeight: 200}}>
+                                <Card 
+                                sx={{ 
+                                    maxWidth: 200, 
+                                    maxHeight: 200,
+                                }}>
                                     <CardMedia 
                                     image={album.images[1].url}
                                     component="img"

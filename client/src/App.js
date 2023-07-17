@@ -15,7 +15,6 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Image from './backgrounds/starRail.png';
 
-
 // since these components are what we defined, im assuming we cannot create hooks to provide css styling to them
 // because in material ui, these components have a prop called className, which allows us to create a hook and style them ourselves
 // but in our implementation, we did not to this.
@@ -31,8 +30,8 @@ import Image from './backgrounds/starRail.png';
 function App() {
 
   return (
-    <React.Fragment> 
-
+    <React.Fragment>   
+   
       <Box
         sx={{
           backgroundImage: `url(${Image})`,
