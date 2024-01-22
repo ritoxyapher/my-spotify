@@ -1,19 +1,13 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap'; // {} means you're importing specific things from specific libaries 
-import Search from "./components/Search"
 import MainBox from "./components/MainBox";
 import ContentBox1 from "./components/ContentBox1";
 import ContentBox2 from "./components/ContentBox2";
 import Navbar from "./components/Navbar";
 import Player from "./components/Player";
-
-import { Grid } from '@mui/material';
-import { makeStyles } from '@material-ui/core/styles';
-import ListItem from '@mui/material/ListItem';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Image from './backgrounds/starRail.png';
+
 
 // since these components are what we defined, im assuming we cannot create hooks to provide css styling to them
 // because in material ui, these components have a prop called className, which allows us to create a hook and style them ourselves
@@ -31,7 +25,7 @@ function App() {
 
   return (
     <React.Fragment>   
-   
+
       <Box
         sx={{
           backgroundImage: `url(${Image})`,
@@ -88,8 +82,10 @@ function App() {
         marginTop: '7px',  
         }}
         >
+          
           <MainBox>
           </MainBox>
+          
         </Box>
         
         <Box sx={{ gridArea: 'player', 

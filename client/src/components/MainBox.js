@@ -1,10 +1,6 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
 import Search from './Search';
-
-import useStyles from './style';
 
 // How are we going to add custom css to each of these components?
 // Each of these components from Material UI are precoded libaries and have their own class props (member)
@@ -22,14 +18,14 @@ function MainBox(){
 
     return(
 
-        <React.Fragment>
-            
+        <div>
+        
             <Container maxWidth='false'>
                 <Search></Search>
-                
             </Container>
-            
-        </React.Fragment>
+
+        </div>
+        
     );
 }
 

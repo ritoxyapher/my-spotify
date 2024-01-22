@@ -26,6 +26,36 @@ function Search(){
         }
     });
 
+    function truncate(albumName){ // this is so our text doesnt overflow from the container 
+        
+        if(albumName.length > 18){
+            var temptext = "";
+            for(var i = 0; i < 18; i++){
+                temptext += albumName[i];
+            }
+            temptext += ".."
+            albumName = temptext;
+        }
+
+        return albumName;
+    }
+
+    async function search(){
+
+        // Get request using search
+        const artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', user.search_parameters)
+        .then(response => response.json())
+        .then(data => { return data.artists.items[0].id }) // the fetch call returns a json with a block of info, we have to narrow down the info we want
+
+
+        // with Artist ID grab all albums from that artist
+        const returnAlbums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=US&limit=50', user.search_parameters)
+        .then(response => response.json())
+        .then(data => {
+            setAlbums(data.items);
+        }) // set our album state to the returning array that contains all the albums of that searched artist
+    }
+
     // I need an access token to make calls to spotify api
     // we can use useEffect to do something after the DOM has rendered
 
@@ -51,37 +81,6 @@ function Search(){
         
 
     }, []); // [] this is so it only runs once when we start our react application
-
-    async function search(){
-
-        // Get request using search
-        const artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', user.search_parameters)
-        .then(response => response.json())
-        .then(data => { return data.artists.items[0].id }) // the fetch call returns a json with a block of info, we have to narrow down the info we want
-
-
-        // with Artist ID grab all albums from that artist
-        const returnAlbums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=US&limit=50', user.search_parameters)
-        .then(response => response.json())
-        .then(data => {
-            setAlbums(data.items);
-        }) // set our album state to the returning array that contains all the albums of that searched artist
-    }
-
-
-    function truncate(albumName){ // this is so our text doesnt overflow from the container 
-        
-        if(albumName.length > 18){
-            var temptext = "";
-            for(var i = 0; i < 18; i++){
-                temptext += albumName[i];
-            }
-            temptext += ".."
-            albumName = temptext;
-        }
-
-        return albumName;
-    }
 
 
     return(
@@ -139,9 +138,6 @@ function Search(){
 
             </Grid>
 
-           
-
-         
         </div> 
 
     );
