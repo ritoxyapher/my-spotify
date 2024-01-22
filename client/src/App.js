@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Player from "./components/Player";
 import Box from '@mui/material/Box';
 import Image from './backgrounds/starRail.png';
+import './index.css'
 
 
 // since these components are what we defined, im assuming we cannot create hooks to provide css styling to them
@@ -26,82 +27,32 @@ function App() {
   return (
     <React.Fragment>   
 
-      <Box
-        sx={{
-          backgroundImage: `url(${Image})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: 'black',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gridTemplateRows: '10vh 40vh 40vh 10vh',
-          gap: 1,
-          gridTemplateAreas: `"nav ms ms ms ms"
-        "ct1 ms ms ms ms"
-        "ct2 ms ms ms ms"
-        "player player player player player"`,
-        }}
-      >
+      <div className="main-box">
 
-        <Box sx={{ gridArea: 'nav', 
-        backgroundColor: 'rgb(18,18,18)',
-        color: 'white',
-        borderRadius: '10px', 
-        marginLeft: '7px', 
-        marginTop: '7px', 
-        }}
-        >
+        <div className="nav-box">
           <Navbar></Navbar>
-        </Box>
-
-        <Box sx={{ gridArea: 'ct1', 
-        backgroundColor: 'rgb(18,18,18)',
-        color: 'white',
-        borderRadius: '10px', 
-        marginLeft: '7px', 
-        }}
-        >
+        </div>
+          
+        <div className="content-box1">
           <ContentBox1></ContentBox1>
-        </Box>
-
-        <Box sx={{ gridArea: 'ct2', 
-        backgroundColor: 'rgb(18,18,18)',
-        color: 'white',
-        borderRadius: '10px', 
-        marginLeft: '7px', 
-        }}
-        >
+        </div>
+          
+        <div className="content-box2">
           <ContentBox2></ContentBox2>
-        </Box>
+        </div>
 
-        <Box sx={{ gridArea: 'ms', 
-        backgroundColor: 'rgb(33,33,33)',
-        color: 'white',
-        borderRadius: '10px', 
-        marginRight: '7px', 
-        marginTop: '7px',  
-        }}
-        >
-          
-          <MainBox>
-          </MainBox>
-          
-        </Box>
+        <div className="main-screen">
+          <div id="main-screen-sub">
+            <MainBox></MainBox>
+          </div>
+        </div>
         
-        <Box sx={{ gridArea: 'player', 
-        backgroundColor: 'Black',
-        color: 'white', 
-        borderRadius: '10px', 
-        marginLeft: '7px', 
-        marginRight: '7px', 
-        }}
-        >
+        <div className="player-box">
           <Player></Player>
-        </Box>
+        </div>
 
-      </Box>
-       
-    
+      </div>
+
     </React.Fragment>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Search from './Search';
 
+
 // How are we going to add custom css to each of these components?
 // Each of these components from Material UI are precoded libaries and have their own class props (member)
 // --> Material UI Hook Api?
@@ -19,13 +20,9 @@ function MainBox(){
     return(
 
         <div>
-        
-            <Container maxWidth='false'>
-                <Search></Search>
-            </Container>
-
+            <Search></Search>
         </div>
-        
+       
     );
 }
 

@@ -2,3 +2,77 @@ html, body{
     overflow: hidden;
 }
 
+.main-box{
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 10vh 40vh 40vh 10vh;
+    gap: 10px;
+
+    grid-template-areas: "nav ms ms ms ms"
+    "ct1 ms ms ms ms"
+    "ct2 ms ms ms ms"
+    "player player player player player";
+}
+
+.nav-box{
+    grid-area: nav;
+    background-color: rgb(18, 18, 18);
+    color: white;
+    border-radius: 10px;
+
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.content-box1{
+    grid-area: ct1;
+    background-color: rgb(18, 18, 18);
+    color: white;
+    border-radius: 10px;
+
+    margin-left: 10px;
+}
+
+.content-box2{
+    grid-area: ct2;
+    background-color: rgb(18, 18, 18);
+    color: white;
+    border-radius: 10px;
+
+    margin-left: 10px;
+}
+
+.main-screen{
+    grid-area: ms;
+    background-color: rgb(33, 33, 33);
+    color: white;
+    border-radius: 10px;
+
+    margin-right: 10px;
+    margin-top: 10px;
+
+    position: relative;
+    overflow-x: hidden;
+}
+
+#main-screen-sub{
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+}
+
+.player-box{
+    grid-area: player;
+    background-color: rgb(33, 33, 33);
+    color: white;
+    border-radius: 10px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+}
